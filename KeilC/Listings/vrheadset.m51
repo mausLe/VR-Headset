@@ -1,0 +1,99 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/23/2019  00:01:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\vrheadset.obj TO .\Objects\vrheadset PRINT (.\Listings\vrheadset.m51) RAMSIZE (256
+>> )
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\vrheadset.obj (VRHEADSET)
+
+
+LINK MAP OF MODULE:  .\Objects\vrheadset (VRHEADSET)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     008EH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\vrheadset (VRHEADSET)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        VRHEADSET
+  C:0033H         SYMBOL        BEGIN
+  C:0081H         SYMBOL        DELAY
+  C:0083H         SYMBOL        L0
+  C:0085H         SYMBOL        L1
+  C:0087H         SYMBOL        L2
+  C:0030H         SYMBOL        MAIN
+  D:00A0H         SYMBOL        P2
+  C:0045H         SYMBOL        SET_DUTYCYCLE0
+  C:0059H         SYMBOL        SET_DUTYCYCLE1
+  C:006DH         SYMBOL        SET_DUTYCYCLE2
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:0030H         LINE#         6
+  C:0033H         LINE#         11
+  C:0035H         LINE#         12
+  C:0037H         LINE#         13
+  C:0039H         LINE#         14
+  C:003BH         LINE#         16
+  C:003DH         LINE#         17
+  C:003FH         LINE#         18
+  C:0041H         LINE#         19
+  C:0043H         LINE#         23
+  C:0045H         LINE#         25
+  C:0047H         LINE#         26
+  C:004AH         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/23/2019  00:01:27  PAGE 2
+
+
+  C:004DH         LINE#         28
+  C:004FH         LINE#         29
+  C:0052H         LINE#         30
+  C:0054H         LINE#         31
+  C:0056H         LINE#         33
+  C:0058H         LINE#         34
+  C:0059H         LINE#         37
+  C:005BH         LINE#         38
+  C:005EH         LINE#         39
+  C:0061H         LINE#         40
+  C:0063H         LINE#         41
+  C:0066H         LINE#         42
+  C:0068H         LINE#         43
+  C:006AH         LINE#         45
+  C:006CH         LINE#         46
+  C:006DH         LINE#         49
+  C:006FH         LINE#         50
+  C:0072H         LINE#         51
+  C:0075H         LINE#         52
+  C:0077H         LINE#         53
+  C:007AH         LINE#         54
+  C:007CH         LINE#         55
+  C:007EH         LINE#         57
+  C:0080H         LINE#         58
+  C:0081H         LINE#         60
+  C:0083H         LINE#         61
+  C:0085H         LINE#         62
+  C:0087H         LINE#         63
+  C:0089H         LINE#         64
+  C:008BH         LINE#         65
+  C:008DH         LINE#         66
+  -------         ENDMOD        VRHEADSET
+
+Program Size: data=8.0 xdata=0 code=142
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
