@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 00:01:26 PAGE     1
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 01:52:52 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -8,99 +8,121 @@ ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE vrheadset.a51 SET(SMALL) DEBUG 
 
 LOC  OBJ            LINE     SOURCE
 
-0000                   1               ORG   0000H      
-0000 802E              2           JMP   MAIN
+                       1     
+                       2     
                        3     
-0030                   4           ORG 0030H
-0030                   5     MAIN:
-0030 758901            6           MOV TMOD, #01H
-                       7           
-                       8           ;SETB P2.2
-                       9                 
-0033                  10        BEGIN:
-0033 1159             11           ACALL SET_DUTYCYCLE1
-0035 1181             12           ACALL DELAY
-0037 1145             13           ACALL SET_DUTYCYCLE0
-0039 1181             14           ACALL DELAY
-                      15     
-003B 116D             16           ACALL SET_DUTYCYCLE2
-003D 1181             17           ACALL DELAY
-003F 1145             18           ACALL SET_DUTYCYCLE0
-0041 1181             19           ACALL DELAY      
-                      20           ;ACALL SET_DUTYCYCLE3
-                      21           ;ACALL DELAY
-                      22           
-0043 80EB             23           SJMP MAIN
-0045                  24        SET_DUTYCYCLE0:
-0045 D2A0             25        SETB P2.0
-0047 758C05           26           MOV TH0,#HIGH(1480)
-004A 758AC8           27           MOV TL0,#LOW(1480)
-004D D28C             28           SETB TR0
-004F 308DFD           29           JNB TF0, $
-0052 C28C             30           CLR TR0
-0054 C28D             31           CLR TF0
-                      32           
-0056 B2A0             33           CPL P2.0
-0058 22               34           RET
-                      35           
-0059                  36        SET_DUTYCYCLE1:
-0059 D2A0             37        SETB P2.0
-005B 758CFC           38           MOV TH0,#HIGH(-950)
-005E 758A4A           39           MOV TL0,#LOW(-950)
-0061 D28C             40           SETB TR0
-0063 308DFD           41           JNB TF0, $
-0066 C28C             42           CLR TR0
-0068 C28D             43           CLR TF0
-                      44           
-006A B2A0             45           CPL P2.0
-006C 22               46           RET
-                      47           
-006D                  48        SET_DUTYCYCLE2:
-006D D2A0             49        SETB P2.0
-006F 758AF8           50           MOV TL0, #HIGH(-2000)
-0072 758C30           51           MOV TH0, #LOW(-2000)
-0075 D28C             52           SETB TR0
-0077 308DFD           53           JNB TF0, $
-007A C28C             54           CLR TR0
-007C C28D             55           CLR TF0
-                      56           
-007E B2A0             57           CPL P2.0
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 00:01:26 PAGE     2
+0000                   4     ORG   0000H      
+0000 802E              5           JMP   MAIN
+                       6     
+0030                   7     ORG 0030H
+0030                   8     MAIN:
+0030 758901            9           MOV TMOD, #01 ;timer0,mode1, 0-65535
+0033 113D             10           acall Goc_am90  
+0035 118F             11               acall delay
+0037 1142             12               acall Goc_90
+0039 118F             13               acall delay
+003B 80F3             14           JMP MAIN
+                      15               
+003D                  16     Goc_am90:
+003D 1159             17             ACALL SET_DUTYCYCLE1_am90  
+003F 1147             18             ACALL SET_DUTYCYCLE0_am90  
+0041 22               19             ret  
+                      20     
+0042                  21     Goc_90:
+0042 117D             22             ACALL SET_DUTYCYCLE1_90  
+0044 116B             23         ACALL SET_DUTYCYCLE0_90  
+0046 22               24         ret    
+                      25     
+0047                  26     SET_DUTYCYCLE0_am90:
+                      27     
+                      28     
+                      29     
+0047 C2A0             30           clr P2.0
+0049 758CB5           31           MOV TH0,#HIGH(0B5C8h)
+004C 758A00           32           MOV TL0,#LOW(0h)
+004F D28C             33           SETB TR0
+0051 308DFD           34           JNB TF0, $
+0054 C28C             35           CLR TR0
+0056 C28D             36           CLR TF0
+0058 22               37           RET
+                      38           
+0059                  39     SET_DUTYCYCLE1_am90:
+                      40     
+                      41     
+                      42     
+0059 D2A0             43           SETB P2.0
+005B 758CFC           44           MOV TH0,#HIGH(0FC18h)
+005E 758A00           45           MOV TL0,#LOW(0h)
+0061 D28C             46           SETB TR0
+0063 308DFD           47           JNB TF0, $
+0066 C28C             48           CLR TR0
+0068 C28D             49           CLR TF0
+006A 22               50           RET
+                      51           
+                      52     
+                      53               
+006B                  54     SET_DUTYCYCLE0_90:
+                      55     
+                      56     
+                      57     
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 01:52:52 PAGE     2
 
-0080 22               58           RET
-                      59           
-0081 79C8             60        DELAY: MOV R1, #200;Delay is 200ms
-0083 7A28             61           L0: MOV R2, #40
-0085 7B19             62              L1: MOV R3, #25
-0087 DBFE             63                 L2: DJNZ R3, L2
-0089 DAFA             64              DJNZ R2, L1
-008B D9F6             65           DJNZ R1, L0
-008D 22               66           RET
-                      67              
-                      68     END
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 00:01:26 PAGE     3
+006B C2A0             58           clr P2.0
+006D 758CB7           59           MOV TH0,#HIGH(0B7BCh)
+0070 758A00           60           MOV TL0,#LOW(0h)
+0073 D28C             61           SETB TR0
+0075 308DFD           62           JNB TF0, $
+0078 C28C             63           CLR TR0
+007A C28D             64           CLR TF0
+007C 22               65           RET
+                      66              
+007D                  67     SET_DUTYCYCLE1_90:
+                      68     
+                      69     
+                      70     
+007D D2A0             71           SETB P2.0
+007F 758AFA           72           MOV TL0, #HIGH(0FA24h)
+0082 758C00           73           MOV TH0, #LOW(0h)
+0085 D28C             74           SETB TR0
+0087 308DFD           75           JNB TF0, $
+008A C28C             76           CLR TR0
+008C C28D             77           CLR TF0
+008E 22               78           RET
+                      79           
+008F 79FF             80     DELAY: MOV R1, #255;Delay is 200ms
+0091 7AFF             81           L0: MOV R2, #255
+0093 7B19             82              L1: MOV R3, #25
+0095 DBFE             83                 L2: DJNZ R3, L2
+0097 DAFA             84              DJNZ R2, L1
+0099 D9F6             85           DJNZ R1, L0
+009B 22               86           RET
+                      87              
+                      88     END
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 01:52:52 PAGE     3
 
 SYMBOL TABLE LISTING
 ------ ----- -------
 
 
-N A M E             T Y P E  V A L U E   ATTRIBUTES
+N A M E              T Y P E  V A L U E   ATTRIBUTES
 
-BEGIN. . . . . . .  C ADDR   0033H   A   
-DELAY. . . . . . .  C ADDR   0081H   A   
-L0 . . . . . . . .  C ADDR   0083H   A   
-L1 . . . . . . . .  C ADDR   0085H   A   
-L2 . . . . . . . .  C ADDR   0087H   A   
-MAIN . . . . . . .  C ADDR   0030H   A   
-P2 . . . . . . . .  D ADDR   00A0H   A   
-SET_DUTYCYCLE0 . .  C ADDR   0045H   A   
-SET_DUTYCYCLE1 . .  C ADDR   0059H   A   
-SET_DUTYCYCLE2 . .  C ADDR   006DH   A   
-TF0. . . . . . . .  B ADDR   0088H.5 A   
-TH0. . . . . . . .  D ADDR   008CH   A   
-TL0. . . . . . . .  D ADDR   008AH   A   
-TMOD . . . . . . .  D ADDR   0089H   A   
-TR0. . . . . . . .  B ADDR   0088H.4 A   
+DELAY . . . . . . .  C ADDR   008FH   A   
+GOC_90. . . . . . .  C ADDR   0042H   A   
+GOC_AM90. . . . . .  C ADDR   003DH   A   
+L0. . . . . . . . .  C ADDR   0091H   A   
+L1. . . . . . . . .  C ADDR   0093H   A   
+L2. . . . . . . . .  C ADDR   0095H   A   
+MAIN. . . . . . . .  C ADDR   0030H   A   
+P2. . . . . . . . .  D ADDR   00A0H   A   
+SET_DUTYCYCLE0_90 .  C ADDR   006BH   A   
+SET_DUTYCYCLE0_AM90  C ADDR   0047H   A   
+SET_DUTYCYCLE1_90 .  C ADDR   007DH   A   
+SET_DUTYCYCLE1_AM90  C ADDR   0059H   A   
+TF0 . . . . . . . .  B ADDR   0088H.5 A   
+TH0 . . . . . . . .  D ADDR   008CH   A   
+TL0 . . . . . . . .  D ADDR   008AH   A   
+TMOD. . . . . . . .  D ADDR   0089H   A   
+TR0 . . . . . . . .  B ADDR   0088H.4 A   
 
 
 REGISTER BANK(S) USED: 0 
