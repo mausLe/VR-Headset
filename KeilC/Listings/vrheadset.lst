@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 19:21:32 PAGE     1
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/24/2019 11:21:37 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -17,8 +17,8 @@ LOC  OBJ            LINE     SOURCE
 0030                   7     ORG 0030H
 0030                   8     MAIN:
 0030 758901            9           MOV TMOD, #01 ;timer0,mode1, 0-65535
-                      10           
-0033 1160             11               acall Goc_0           ;64036 - 47036 (1-0) (0FA24h - 0B7BCh)
+0033 1137             10           acall Goc_am90  ;64536 -46536 (1-0) / sum = 111 072
+                      11               
                       12               
                       13               
                       14               
@@ -34,8 +34,8 @@ LOC  OBJ            LINE     SOURCE
                       24     
                       25     
 003C C2A0             26           clr P2.0
-003E 758CB5           27           MOV TH0,#HIGH(0B5C8h)
-0041 758A00           28           MOV TL0,#LOW(0h)
+003E 758C00           27           MOV TH0,#HIGH(0B5h)
+0041 758AC8           28           MOV TL0,#LOW(0C8h)
 0044 D28C             29           SETB TR0
 0046 308DFD           30           JNB TF0, $
 0049 C28C             31           CLR TR0
@@ -47,8 +47,8 @@ LOC  OBJ            LINE     SOURCE
                       37     
                       38     
 004E D2A0             39           SETB P2.0
-0050 758CFC           40           MOV TH0,#HIGH(0FC18h)
-0053 758A00           41           MOV TL0,#LOW(0h)
+0050 758C00           40           MOV TH0,#HIGH(0FCh)
+0053 758A18           41           MOV TL0,#LOW(018h)
 0056 D28C             42           SETB TR0
 0058 308DFD           43           JNB TF0, $
 005B C28C             44           CLR TR0
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
                       55     
                       56     
 0067 C2A0             57           clr P2.0
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 19:21:32 PAGE     2
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/24/2019 11:21:37 PAGE     2
 
 0069 758CB7           58           MOV TH0,#HIGH(0B7BCh)
 006C 758A00           59           MOV TL0,#LOW(0h)
@@ -128,7 +128,7 @@ LOC  OBJ            LINE     SOURCE
 00C2 22              116           RET
                      117              
                      118     END
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/23/2019 19:21:32 PAGE     3
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/24/2019 11:21:37 PAGE     3
 
 SYMBOL TABLE LISTING
 ------ ----- -------

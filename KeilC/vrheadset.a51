@@ -7,8 +7,8 @@ ORG   0000H
 ORG 0030H
 MAIN:
       MOV TMOD, #01 ;timer0,mode1, 0-65535
-      //acall Goc_am90  ;64536 -46536 (1-0) / sum = 111 072
-	  acall Goc_0 		;64036 - 47036 (1-0) (0FA24h - 0B7BCh)
+      acall Goc_am90  ;64536 -46536 (1-0) / sum = 111 072
+	  //acall Goc_0 		;64036 - 47036 (1-0) (0FA24h - 0B7BCh)
 	  //tested:63800 of Goc_0 - no hope!
 	  //acall Goc_duong90 ;63536 - 47536 (1-0)
 	  
@@ -24,8 +24,8 @@ SET_DUTYCYCLE0_am90:
 //19/1000 = Tongthoigian(xungthap)
 //Solandem=0,019/(1/1000 000)=19 000 (lan)->Dem tu 65536-19 000= 46 536=0xB5C8
       clr P2.0
-      MOV TH0,#HIGH(0B5C8h)
-      MOV TL0,#LOW(0h)
+      MOV TH0,#HIGH(0B5h)
+      MOV TL0,#LOW(0C8h)
       SETB TR0
       JNB TF0, $
       CLR TR0
@@ -37,8 +37,8 @@ SET_DUTYCYCLE1_am90:
 //1/1000 = Tongthoigian(xungcao)
 //Solandem=0,001/(1/1000 000)=1000 (lan)->Dem tu 65536-1000= 64 536=0xFC18
       SETB P2.0
-      MOV TH0,#HIGH(0FC18h)
-      MOV TL0,#LOW(0h)
+      MOV TH0,#HIGH(0FCh)
+      MOV TL0,#LOW(018h)
       SETB TR0
       JNB TF0, $
       CLR TR0

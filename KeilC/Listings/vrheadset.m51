@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/23/2019  19:21:38  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    05/24/2019  11:21:37  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -52,14 +52,14 @@ SYMBOL TABLE OF MODULE:  .\Objects\vrheadset (VRHEADSET)
   B:0088H.4       SYMBOL        TR0
   C:0000H         LINE#         5
   C:0030H         LINE#         9
-  C:0033H         LINE#         11
+  C:0033H         LINE#         10
   C:0035H         LINE#         15
   C:0037H         LINE#         18
   C:0039H         LINE#         19
   C:003BH         LINE#         20
   C:003CH         LINE#         26
   C:003EH         LINE#         27
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/23/2019  19:21:38  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/24/2019  11:21:37  PAGE 2
 
 
   C:0041H         LINE#         28
@@ -119,12 +119,16 @@ SYMBOL TABLE OF MODULE:  .\Objects\vrheadset (VRHEADSET)
   C:00BAH         LINE#         112
   C:00BCH         LINE#         113
   C:00BEH         LINE#         114
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/23/2019  19:21:38  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  05/24/2019  11:21:37  PAGE 3
 
 
   C:00C0H         LINE#         115
   C:00C2H         LINE#         116
   -------         ENDMOD        VRHEADSET
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0095H BYTE ( 7%) *
+******************************************************************************
 
 Program Size: data=8.0 xdata=0 code=195
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
