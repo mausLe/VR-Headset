@@ -20,7 +20,7 @@ LINK MAP OF MODULE:  .\Objects\vrheadset (VRHEADSET)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     01D8H     ABSOLUTE     
+            CODE    0000H     01D8H     ABSOLUTE
 
 
 

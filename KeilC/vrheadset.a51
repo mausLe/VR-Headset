@@ -6,12 +6,12 @@
 ;====================================================================
 
       org   0100h
-Start:	
+Start:
 		; Write your code here
 		mov	TMOD,	#00000001B
 		SETB	P2.0
 		;MOV P2, #000H
-Loop:	
+Loop:
 		ACALL MOVE0
 		ACALL DELAYSV
 		ACALL MOVE45
@@ -96,7 +96,7 @@ MOVET900:
 	DJNZ R7,MOVET900
 	MOV R7,#0
 	RET
-		
+
 DELAY90:
 	MOV TL0,#LOW(-2000)
 	MOV TH0,#HIGH(-2000)
@@ -128,7 +128,7 @@ DELAYT45:
 	JNB  TF0,$
 	CLR  TR0
 	CLR  TF0
-	RET	
+	RET
 DELAYT90:
 	MOV TL0,#LOW(-1000)
 	MOV TH0,#HIGH(-1000)
