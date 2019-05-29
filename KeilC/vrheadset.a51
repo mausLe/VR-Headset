@@ -6,12 +6,12 @@
 ;====================================================================
 
       org   0100h
-Start:
+Start:	
 		; Write your code here
 		mov	TMOD,	#00000001B
 		SETB	P2.0
 		;MOV P2, #000H
-Loop:
+Loop:	
 		ACALL MOVE0
 		ACALL DELAYSV
 		ACALL MOVE45
@@ -31,7 +31,7 @@ Loop:
       jmp Loop
 
 DELAYSV:
-	MOV	R7,#20
+	MOV	R7,#5
 	DELAYSVV:
 	MOV TL0,#LOW(-60000)
 	MOV TH0,#HIGH(-60000)
@@ -44,7 +44,7 @@ DELAYSV:
 	RET
 ;------------------------------	CHUONG TRINH CON GOC SERVO -------------------
 MOVE90:
-	MOV R7,#10
+	MOV R7,#20
 MOVE900:
 	SETB P2.0
 	CALL DELAY90
@@ -55,7 +55,7 @@ MOVE900:
 	RET
 
 MOVE45:
-	MOV R7,#10
+	MOV R7,#20
 MOVE455:
 	SETB P2.0
 	CALL DELAY45
@@ -66,7 +66,7 @@ MOVE455:
 	RET
 
 MOVE0:
-	MOV R7,#10
+	MOV R7,#20
 MOVE00:
 	SETB P2.0
 	CALL DELAY0
@@ -96,18 +96,18 @@ MOVET900:
 	DJNZ R7,MOVET900
 	MOV R7,#0
 	RET
-
+		
 DELAY90:
-	MOV TL0,#LOW(-2000)
-	MOV TH0,#HIGH(-2000)
+	MOV TL0,#LOW(-2500)
+	MOV TH0,#HIGH(-2500)
 	SETB TR0
 	JNB  TF0,$
 	CLR  TR0
 	CLR  TF0
 	RET
 DELAY45:
-	MOV TL0,#LOW(-1750)
-	MOV TH0,#HIGH(-1750)
+	MOV TL0,#LOW(-2000)
+	MOV TH0,#HIGH(-2000)
 	SETB TR0
 	JNB  TF0,$
 	CLR  TR0
@@ -122,16 +122,16 @@ DELAY0:
 	CLR  TF0
 	RET
 DELAYT45:
-	MOV TL0,#LOW(-1250)
-	MOV TH0,#HIGH(-1250)
+	MOV TL0,#LOW(-1000)
+	MOV TH0,#HIGH(-1000)
 	SETB TR0
 	JNB  TF0,$
 	CLR  TR0
 	CLR  TF0
-	RET
+	RET	
 DELAYT90:
-	MOV TL0,#LOW(-1000)
-	MOV TH0,#HIGH(-1000)
+	MOV TL0,#LOW(-500)
+	MOV TH0,#HIGH(-500)
 	SETB TR0
 	JNB  TF0,$
 	CLR  TR0

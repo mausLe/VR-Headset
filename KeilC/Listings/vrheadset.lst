@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/28/2019 16:35:34 PAGE     1
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/29/2019 18:35:57 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -10,18 +10,18 @@ LOC  OBJ            LINE     SOURCE
 
 0000                   1           org   0000h
 0000 2100              2           jmp   Start
-                       3
+                       3     
                        4     ;====================================================================
                        5     ; CODE SEGMENT
                        6     ;====================================================================
-                       7
+                       7     
 0100                   8           org   0100h
-0100                   9     Start:
+0100                   9     Start:  
                       10                     ; Write your code here
 0100 758901           11                     mov     TMOD,   #00000001B
 0103 D2A0             12                     SETB    P2.0
                       13                     ;MOV P2, #000H
-0105                  14     Loop:
+0105                  14     Loop:   
 0105 315B             15                     ACALL MOVE0
 0107 3127             16                     ACALL DELAYSV
 0109 314C             17                     ACALL MOVE45
@@ -39,9 +39,9 @@ LOC  OBJ            LINE     SOURCE
 0121 316A             29                     ACALL MOVET45
 0123 3127             30                     ACALL DELAYSV
 0125 80DE             31           jmp Loop
-                      32
+                      32     
 0127                  33     DELAYSV:
-0127 7F14             34             MOV     R7,#20
+0127 7F05             34             MOV     R7,#5
 0129                  35             DELAYSVV:
 0129 758AA0           36             MOV TL0,#LOW(-60000)
 012C 758C15           37             MOV TH0,#HIGH(-60000)
@@ -54,7 +54,7 @@ LOC  OBJ            LINE     SOURCE
 013C 22               44             RET
                       45     ;------------------------------ CHUONG TRINH CON GOC SERVO -------------------
 013D                  46     MOVE90:
-013D 7F0A             47             MOV R7,#10
+013D 7F14             47             MOV R7,#20
 013F                  48     MOVE900:
 013F D2A0             49             SETB P2.0
 0141 3188             50             CALL DELAY90
@@ -63,11 +63,11 @@ LOC  OBJ            LINE     SOURCE
 0147 DFF6             53             DJNZ R7,MOVE900
 0149 7F00             54             MOV R7,#0
 014B 22               55             RET
-                      56
+                      56     
 014C                  57     MOVE45:
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/28/2019 16:35:34 PAGE     2
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/29/2019 18:35:57 PAGE     2
 
-014C 7F0A             58             MOV R7,#10
+014C 7F14             58             MOV R7,#20
 014E                  59     MOVE455:
 014E D2A0             60             SETB P2.0
 0150 3198             61             CALL DELAY45
@@ -76,9 +76,9 @@ LOC  OBJ            LINE     SOURCE
 0156 DFF6             64             DJNZ R7,MOVE455
 0158 7F00             65             MOV R7,#0
 015A 22               66             RET
-                      67
+                      67     
 015B                  68     MOVE0:
-015B 7F0A             69             MOV R7,#10
+015B 7F14             69             MOV R7,#20
 015D                  70     MOVE00:
 015D D2A0             71             SETB P2.0
 015F 31A8             72             CALL DELAY0
@@ -87,7 +87,7 @@ LOC  OBJ            LINE     SOURCE
 0165 DFF6             75             DJNZ R7,MOVE00
 0167 7F00             76             MOV R7,#0
 0169 22               77             RET
-                      78
+                      78     
 016A                  79     MOVET45:
 016A 7F14             80             MOV R7,#20
 016C                  81     MOVET455:
@@ -108,18 +108,18 @@ LOC  OBJ            LINE     SOURCE
 0183 DFF6             96             DJNZ R7,MOVET900
 0185 7F00             97             MOV R7,#0
 0187 22               98             RET
-                      99
+                      99                     
 0188                 100     DELAY90:
-0188 758A30          101             MOV TL0,#LOW(-2000)
-018B 758CF8          102             MOV TH0,#HIGH(-2000)
+0188 758A3C          101             MOV TL0,#LOW(-2500)
+018B 758CF6          102             MOV TH0,#HIGH(-2500)
 018E D28C            103             SETB TR0
 0190 308DFD          104             JNB  TF0,$
 0193 C28C            105             CLR  TR0
 0195 C28D            106             CLR  TF0
 0197 22              107             RET
 0198                 108     DELAY45:
-0198 758A2A          109             MOV TL0,#LOW(-1750)
-019B 758CF9          110             MOV TH0,#HIGH(-1750)
+0198 758A30          109             MOV TL0,#LOW(-2000)
+019B 758CF8          110             MOV TH0,#HIGH(-2000)
 019E D28C            111             SETB TR0
 01A0 308DFD          112             JNB  TF0,$
 01A3 C28C            113             CLR  TR0
@@ -133,26 +133,26 @@ LOC  OBJ            LINE     SOURCE
 01B3 C28C            121             CLR  TR0
 01B5 C28D            122             CLR  TF0
 01B7 22              123             RET
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/28/2019 16:35:34 PAGE     3
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/29/2019 18:35:57 PAGE     3
 
 01B8                 124     DELAYT45:
-01B8 758A1E          125             MOV TL0,#LOW(-1250)
-01BB 758CFB          126             MOV TH0,#HIGH(-1250)
+01B8 758A18          125             MOV TL0,#LOW(-1000)
+01BB 758CFC          126             MOV TH0,#HIGH(-1000)
 01BE D28C            127             SETB TR0
 01C0 308DFD          128             JNB  TF0,$
 01C3 C28C            129             CLR  TR0
 01C5 C28D            130             CLR  TF0
-01C7 22              131             RET
+01C7 22              131             RET     
 01C8                 132     DELAYT90:
-01C8 758A18          133             MOV TL0,#LOW(-1000)
-01CB 758CFC          134             MOV TH0,#HIGH(-1000)
+01C8 758A0C          133             MOV TL0,#LOW(-500)
+01CB 758CFE          134             MOV TH0,#HIGH(-500)
 01CE D28C            135             SETB TR0
 01D0 308DFD          136             JNB  TF0,$
 01D3 C28C            137             CLR  TR0
 01D5 C28D            138             CLR  TF0
 01D7 22              139             RET
 *** WARNING #A41 IN 139 (vrheadset.a51, LINE 139): MISSING 'END' STATEMENT
-A51 MACRO ASSEMBLER  VRHEADSET                                                            05/28/2019 16:35:34 PAGE     4
+A51 MACRO ASSEMBLER  VRHEADSET                                                            05/29/2019 18:35:57 PAGE     4
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -160,35 +160,35 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
-AGAIN. . . . . . .  C ADDR   0131H   A
-DELAY0 . . . . . .  C ADDR   01A8H   A
-DELAY45. . . . . .  C ADDR   0198H   A
-DELAY90. . . . . .  C ADDR   0188H   A
-DELAYSV. . . . . .  C ADDR   0127H   A
-DELAYSVV . . . . .  C ADDR   0129H   A
-DELAYT45 . . . . .  C ADDR   01B8H   A
-DELAYT90 . . . . .  C ADDR   01C8H   A
-LOOP . . . . . . .  C ADDR   0105H   A
-MOVE0. . . . . . .  C ADDR   015BH   A
-MOVE00 . . . . . .  C ADDR   015DH   A
-MOVE45 . . . . . .  C ADDR   014CH   A
-MOVE455. . . . . .  C ADDR   014EH   A
-MOVE90 . . . . . .  C ADDR   013DH   A
-MOVE900. . . . . .  C ADDR   013FH   A
-MOVET45. . . . . .  C ADDR   016AH   A
-MOVET455 . . . . .  C ADDR   016CH   A
-MOVET90. . . . . .  C ADDR   0179H   A
-MOVET900 . . . . .  C ADDR   017BH   A
-P2 . . . . . . . .  D ADDR   00A0H   A
-START. . . . . . .  C ADDR   0100H   A
-TF0. . . . . . . .  B ADDR   0088H.5 A
-TH0. . . . . . . .  D ADDR   008CH   A
-TL0. . . . . . . .  D ADDR   008AH   A
-TMOD . . . . . . .  D ADDR   0089H   A
-TR0. . . . . . . .  B ADDR   0088H.4 A
+AGAIN. . . . . . .  C ADDR   0131H   A   
+DELAY0 . . . . . .  C ADDR   01A8H   A   
+DELAY45. . . . . .  C ADDR   0198H   A   
+DELAY90. . . . . .  C ADDR   0188H   A   
+DELAYSV. . . . . .  C ADDR   0127H   A   
+DELAYSVV . . . . .  C ADDR   0129H   A   
+DELAYT45 . . . . .  C ADDR   01B8H   A   
+DELAYT90 . . . . .  C ADDR   01C8H   A   
+LOOP . . . . . . .  C ADDR   0105H   A   
+MOVE0. . . . . . .  C ADDR   015BH   A   
+MOVE00 . . . . . .  C ADDR   015DH   A   
+MOVE45 . . . . . .  C ADDR   014CH   A   
+MOVE455. . . . . .  C ADDR   014EH   A   
+MOVE90 . . . . . .  C ADDR   013DH   A   
+MOVE900. . . . . .  C ADDR   013FH   A   
+MOVET45. . . . . .  C ADDR   016AH   A   
+MOVET455 . . . . .  C ADDR   016CH   A   
+MOVET90. . . . . .  C ADDR   0179H   A   
+MOVET900 . . . . .  C ADDR   017BH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+START. . . . . . .  C ADDR   0100H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
 
 
-REGISTER BANK(S) USED: 0
+REGISTER BANK(S) USED: 0 
 
 
 ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)
