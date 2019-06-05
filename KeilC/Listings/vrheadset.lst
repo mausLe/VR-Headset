@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     1
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -65,292 +65,299 @@ LOC  OBJ            LINE     SOURCE
 0042                  55     serial:
 0042 AF99             56                     mov R7,SBUF
                       57                     ;mov R7,A
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     2
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     2
 
-0044 1149             58                     acall control_servo
+0044 114B             58                     acall control_servo
 0046 C298             59                     clr RI
-0048 32               60                     reti
-                      61     
-0049                  62     control_servo:
-0049 BF6105           63                     cjne R7,#'a',pass1 ;if R7 != a then jump to pass1//11
-004C 3128             64                     acall MOVE90_servo1 ;function for servo1
-004E 31AF             65                     acall MOVET90_servo2 ;function for servo2
-0050 22               66                     ret ;return to serial function
-                      67                     
-0051 BF6205           68     pass1:  cjne R7,#'b',pass2 ;if R7 != b then jump to pass2//12
-0054 3128             69                     acall MOVE90_servo1
-0056 31A0             70                     acall MOVET45_servo2 ;function for servo2
-0058 22               71                     ret
-0059 BF6305           72     pass2:  cjne R7,#'c',pass3 ;if R7 != b then jump to pass2//13
-005C 3128             73                     acall MOVE90_servo1
-005E 3191             74                     acall MOVE0_servo2 ;function for servo2
-0060 22               75                     ret
-0061 BF6405           76     pass3:  cjne R7,#'d',pass4 ;if R7 != b then jump to pass2//14
-0064 3128             77                     acall MOVE90_servo1
-0066 3182             78                     acall MOVE45_servo2 ;function for servo2
-0068 22               79                     ret
-0069 BF6505           80     pass4:  cjne R7,#'e',pass5 ;if R7 != b then jump to pass2//15
-006C 3128             81                     acall MOVE90_servo1
-006E 3173             82                     acall MOVE90_servo2 ;function for servo2
-0070 22               83                     ret
-0071 BF6605           84     pass5:  cjne R7,#'f',pass6 ;if R7 != b then jump to pass2//21
-0074 3137             85                     acall MOVE45_servo1
-0076 31AF             86                     acall MOVET90_servo2 ;function for servo2
-0078 22               87                     ret
-0079 BF6705           88     pass6:  cjne R7,#'g',pass7 ;if R7 != b then jump to pass2//22
-007C 3137             89                     acall MOVE45_servo1
-007E 31A0             90                     acall MOVET45_servo2 ;function for servo2
-0080 22               91                     ret
-0081 BF6805           92     pass7:  cjne R7,#'h',pass8 ;if R7 != b then jump to pass2//23
-0084 3137             93                     acall MOVE45_servo1
-0086 3191             94                     acall MOVE0_servo2 ;function for servo2
-0088 22               95                     ret
-0089 BF6905           96     pass8:  cjne R7,#'i',pass9 ;if R7 != b then jump to pass2//24
-008C 3137             97                     acall MOVE45_servo1
-008E 3182             98                     acall MOVE45_servo2 ;function for servo2
-0090 22               99                     ret
-0091 BF6A05          100     pass9:  cjne R7,#'j',pass10 ;if R7 != b then jump to pass2//25
-0094 3137            101                     acall MOVE45_servo1
-0096 3173            102                     acall MOVE90_servo2 ;function for servo2
-0098 22              103                     ret
-0099 BF6B05          104     pass10: cjne R7,#'k',pass11 ;if R7 != b then jump to pass2//31
-009C 3146            105                     acall MOVE0_servo1
-009E 31AF            106                     acall MOVET90_servo2 ;function for servo2
-00A0 22              107                     ret
-00A1 BF6C05          108     pass11: cjne R7,#'l',pass12 ;if R7 != b then jump to pass2//32
-00A4 3146            109                     acall MOVE0_servo1
-00A6 31A0            110                     acall MOVET45_servo2 ;function for servo2
-00A8 22              111                     ret
-00A9 BF6D05          112     pass12: cjne R7,#'m',pass13 ;if R7 != b then jump to pass2//33
-00AC 3146            113                     acall MOVE0_servo1
-00AE 3191            114                     acall MOVE0_servo2 ;function for servo2
-00B0 22              115                     ret
-00B1 BF6E05          116     pass13: cjne R7,#'n',pass14 ;if R7 != b then jump to pass2//34
-00B4 3146            117                     acall MOVE0_servo1
-00B6 3182            118                     acall MOVE45_servo2 ;function for servo2
-00B8 22              119                     ret
-00B9 BF6F05          120     pass14: cjne R7,#'o',pass15 ;if R7 != b then jump to pass2//35
-00BC 3146            121                     acall MOVE0_servo1
-00BE 3173            122                     acall MOVE90_servo2 ;function for servo2
-00C0 22              123                     ret
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     3
+0048 3114             60                     acall reply
+004A 32               61                     reti
+                      62     
+004B                  63     control_servo:
+004B BF6105           64                     cjne R7,#'a',pass1 ;if R7 != a then jump to pass1//11
+004E 3134             65                     acall MOVE90_servo1 ;function for servo1
+0050 31BB             66                     acall MOVET90_servo2 ;function for servo2
+0052 22               67                     ret ;return to serial function
+                      68                     
+0053 BF6205           69     pass1:  cjne R7,#'b',pass2 ;if R7 != b then jump to pass2//12
+0056 3134             70                     acall MOVE90_servo1
+0058 31AC             71                     acall MOVET45_servo2 ;function for servo2
+005A 22               72                     ret
+005B BF6305           73     pass2:  cjne R7,#'c',pass3 ;if R7 != b then jump to pass2//13
+005E 3134             74                     acall MOVE90_servo1
+0060 319D             75                     acall MOVE0_servo2 ;function for servo2
+0062 22               76                     ret
+0063 BF6405           77     pass3:  cjne R7,#'d',pass4 ;if R7 != b then jump to pass2//14
+0066 3134             78                     acall MOVE90_servo1
+0068 318E             79                     acall MOVE45_servo2 ;function for servo2
+006A 22               80                     ret
+006B BF6505           81     pass4:  cjne R7,#'e',pass5 ;if R7 != b then jump to pass2//15
+006E 3134             82                     acall MOVE90_servo1
+0070 317F             83                     acall MOVE90_servo2 ;function for servo2
+0072 22               84                     ret
+0073 BF6605           85     pass5:  cjne R7,#'f',pass6 ;if R7 != b then jump to pass2//21
+0076 3143             86                     acall MOVE45_servo1
+0078 31BB             87                     acall MOVET90_servo2 ;function for servo2
+007A 22               88                     ret
+007B BF6705           89     pass6:  cjne R7,#'g',pass7 ;if R7 != b then jump to pass2//22
+007E 3143             90                     acall MOVE45_servo1
+0080 31AC             91                     acall MOVET45_servo2 ;function for servo2
+0082 22               92                     ret
+0083 BF6805           93     pass7:  cjne R7,#'h',pass8 ;if R7 != b then jump to pass2//23
+0086 3143             94                     acall MOVE45_servo1
+0088 319D             95                     acall MOVE0_servo2 ;function for servo2
+008A 22               96                     ret
+008B BF6905           97     pass8:  cjne R7,#'i',pass9 ;if R7 != b then jump to pass2//24
+008E 3143             98                     acall MOVE45_servo1
+0090 318E             99                     acall MOVE45_servo2 ;function for servo2
+0092 22              100                     ret
+0093 BF6A05          101     pass9:  cjne R7,#'j',pass10 ;if R7 != b then jump to pass2//25
+0096 3143            102                     acall MOVE45_servo1
+0098 317F            103                     acall MOVE90_servo2 ;function for servo2
+009A 22              104                     ret
+009B BF6B05          105     pass10: cjne R7,#'k',pass11 ;if R7 != b then jump to pass2//31
+009E 3152            106                     acall MOVE0_servo1
+00A0 31BB            107                     acall MOVET90_servo2 ;function for servo2
+00A2 22              108                     ret
+00A3 BF6C05          109     pass11: cjne R7,#'l',pass12 ;if R7 != b then jump to pass2//32
+00A6 3152            110                     acall MOVE0_servo1
+00A8 31AC            111                     acall MOVET45_servo2 ;function for servo2
+00AA 22              112                     ret
+00AB BF6D05          113     pass12: cjne R7,#'m',pass13 ;if R7 != b then jump to pass2//33
+00AE 3152            114                     acall MOVE0_servo1
+00B0 319D            115                     acall MOVE0_servo2 ;function for servo2
+00B2 22              116                     ret
+00B3 BF6E05          117     pass13: cjne R7,#'n',pass14 ;if R7 != b then jump to pass2//34
+00B6 3152            118                     acall MOVE0_servo1
+00B8 318E            119                     acall MOVE45_servo2 ;function for servo2
+00BA 22              120                     ret
+00BB BF6F05          121     pass14: cjne R7,#'o',pass15 ;if R7 != b then jump to pass2//35
+00BE 3152            122                     acall MOVE0_servo1
+00C0 317F            123                     acall MOVE90_servo2 ;function for servo2
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     3
 
-00C1 BF7005          124     pass15: cjne R7,#'p',pass16 ;if R7 != b then jump to pass2//41
-00C4 3155            125                     acall MOVET45_servo1
-00C6 31AF            126                     acall MOVET90_servo2 ;function for servo2
-00C8 22              127                     ret
-00C9 BF7105          128     pass16: cjne R7,#'q',pass17 ;if R7 != b then jump to pass2//42
-00CC 3155            129                     acall MOVET45_servo1
-00CE 31A0            130                     acall MOVET45_servo2 ;function for servo2
-00D0 22              131                     ret
-00D1 BF7205          132     pass17: cjne R7,#'r',pass18 ;if R7 != b then jump to pass2//43
-00D4 3155            133                     acall MOVET45_servo1
-00D6 3191            134                     acall MOVE0_servo2 ;function for servo2
-00D8 22              135                     ret
-00D9 BF7305          136     pass18: cjne R7,#'s',pass19 ;if R7 != b then jump to pass2//44
-00DC 3155            137                     acall MOVET45_servo1
-00DE 3182            138                     acall MOVE45_servo2 ;function for servo2
-00E0 22              139                     ret
-00E1 BF7405          140     pass19: cjne R7,#'t',pass20 ;if R7 != b then jump to pass2//45
-00E4 3155            141                     acall MOVET45_servo1
-00E6 3173            142                     acall MOVE90_servo2 ;function for servo2
-00E8 22              143                     ret
-00E9 BF7505          144     pass20: cjne R7,#'u',pass21 ;if R7 != b then jump to pass2//51
-00EC 3164            145                     acall MOVET90_servo1
-00EE 31AF            146                     acall MOVET90_servo2 ;function for servo2
-00F0 22              147                     ret             
-00F1 BF7605          148     pass21: cjne R7,#'v',pass22 ;if R7 != b then jump to pass2//52
-00F4 3164            149                     acall MOVET90_servo1
-00F6 31A0            150                     acall MOVET45_servo2 ;function for servo2
-00F8 22              151                     ret
-00F9 BF7705          152     pass22: cjne R7,#'w',pass23 ;if R7 != b then jump to pass2//53
-00FC 3164            153                     acall MOVET90_servo1
-00FE 3191            154                     acall MOVE0_servo2 ;function for servo2
-0100 22              155                     ret
-0101 BF7805          156     pass23: cjne R7,#'x',pass24 ;if R7 != b then jump to pass2//54
-0104 3164            157                     acall MOVET90_servo1
-0106 3182            158                     acall MOVE45_servo2 ;function for servo2
-0108 22              159                     ret
-0109 BF7905          160     pass24: cjne R7,#'y',pass25 ;if R7 != b then jump to pass2//55
-010C 3164            161                     acall MOVET90_servo1
-010E 3173            162                     acall MOVE90_servo2 ;function for servo2
-0110 22              163                     ret             
-0111 22              164     pass25: ret
-                     165     
+00C2 22              124                     ret
+00C3 BF7005          125     pass15: cjne R7,#'p',pass16 ;if R7 != b then jump to pass2//41
+00C6 3161            126                     acall MOVET45_servo1
+00C8 31BB            127                     acall MOVET90_servo2 ;function for servo2
+00CA 22              128                     ret
+00CB BF7105          129     pass16: cjne R7,#'q',pass17 ;if R7 != b then jump to pass2//42
+00CE 3161            130                     acall MOVET45_servo1
+00D0 31AC            131                     acall MOVET45_servo2 ;function for servo2
+00D2 22              132                     ret
+00D3 BF7205          133     pass17: cjne R7,#'r',pass18 ;if R7 != b then jump to pass2//43
+00D6 3161            134                     acall MOVET45_servo1
+00D8 319D            135                     acall MOVE0_servo2 ;function for servo2
+00DA 22              136                     ret
+00DB BF7305          137     pass18: cjne R7,#'s',pass19 ;if R7 != b then jump to pass2//44
+00DE 3161            138                     acall MOVET45_servo1
+00E0 318E            139                     acall MOVE45_servo2 ;function for servo2
+00E2 22              140                     ret
+00E3 BF7405          141     pass19: cjne R7,#'t',pass20 ;if R7 != b then jump to pass2//45
+00E6 3161            142                     acall MOVET45_servo1
+00E8 317F            143                     acall MOVE90_servo2 ;function for servo2
+00EA 22              144                     ret
+00EB BF7505          145     pass20: cjne R7,#'u',pass21 ;if R7 != b then jump to pass2//51
+00EE 3170            146                     acall MOVET90_servo1
+00F0 31BB            147                     acall MOVET90_servo2 ;function for servo2
+00F2 22              148                     ret             
+00F3 BF7605          149     pass21: cjne R7,#'v',pass22 ;if R7 != b then jump to pass2//52
+00F6 3170            150                     acall MOVET90_servo1
+00F8 31AC            151                     acall MOVET45_servo2 ;function for servo2
+00FA 22              152                     ret
+00FB BF7705          153     pass22: cjne R7,#'w',pass23 ;if R7 != b then jump to pass2//53
+00FE 3170            154                     acall MOVET90_servo1
+0100 319D            155                     acall MOVE0_servo2 ;function for servo2
+0102 22              156                     ret
+0103 BF7805          157     pass23: cjne R7,#'x',pass24 ;if R7 != b then jump to pass2//54
+0106 3170            158                     acall MOVET90_servo1
+0108 318E            159                     acall MOVE45_servo2 ;function for servo2
+010A 22              160                     ret
+010B BF7905          161     pass24: cjne R7,#'y',pass25 ;if R7 != b then jump to pass2//55
+010E 3170            162                     acall MOVET90_servo1
+0110 317F            163                     acall MOVE90_servo2 ;function for servo2
+0112 22              164                     ret             
+0113 22              165     pass25: ret
                      166     
-0112                 167     DELAYSV:
-0112 7F05            168             MOV     R7,#5
-0114                 169             DELAYSVV:
-0114 758AA0          170             MOV TL0,#LOW(-60000)
-0117 758C15          171             MOV TH0,#HIGH(-60000)
-011A D28C            172             SETB    TR0
-011C 308DFD          173             AGAIN:  JNB     TF0,    AGAIN
-011F C28C            174             CLR     TR0
-0121 C28D            175             CLR     TF0
-0123 DFEF            176             DJNZ R7,DELAYSVV
-0125 7F00            177             MOV     R7,#0
-0127 22              178             RET
-                     179     ;------------------------------ CHUONG TRINH CON GOC SERVO 1 -------------------
-0128                 180     MOVE90_servo1:
-0128 7F14            181             MOV R7,#20
-012A                 182     MOVE900_servo1:
-012A D2A0            183             SETB P2.0
-012C 31BE            184             CALL DELAY90
-012E C2A0            185             CLR P2.0
-0130 31BE            186             CALL DELAY90
-0132 DFF6            187             DJNZ R7,MOVE900_servo1
-0134 7F00            188             MOV R7,#0
-0136 22              189             RET
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     4
+0114                 167     reply:
+0114 747A            168                     mov A,#'z'
+0116 F599            169                     mov sbuf,A
+0118 3099FD          170                     back:jnb TI,back
+011B C299            171                     clr TI
+011D 22              172                     ret
+                     173     
+011E                 174     DELAYSV:
+011E 7F05            175             MOV     R7,#5
+0120                 176             DELAYSVV:
+0120 758AA0          177             MOV TL0,#LOW(-60000)
+0123 758C15          178             MOV TH0,#HIGH(-60000)
+0126 D28C            179             SETB    TR0
+0128 308DFD          180             AGAIN:  JNB     TF0,    AGAIN
+012B C28C            181             CLR     TR0
+012D C28D            182             CLR     TF0
+012F DFEF            183             DJNZ R7,DELAYSVV
+0131 7F00            184             MOV     R7,#0
+0133 22              185             RET
+                     186     ;------------------------------ CHUONG TRINH CON GOC SERVO 1 -------------------
+0134                 187     MOVE90_servo1:
+0134 7F14            188             MOV R7,#20
+0136                 189     MOVE900_servo1:
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     4
 
-                     190     
-0137                 191     MOVE45_servo1:
-0137 7F14            192             MOV R7,#20
-0139                 193     MOVE455_servo1:
-0139 D2A0            194             SETB P2.0
-013B 31CE            195             CALL DELAY45
-013D C2A0            196             CLR P2.0
-013F 31CE            197             CALL DELAY45
-0141 DFF6            198             DJNZ R7,MOVE455_servo1
-0143 7F00            199             MOV R7,#0
-0145 22              200             RET
-                     201     
-0146                 202     MOVE0_servo1:
-0146 7F14            203             MOV R7,#20
-0148                 204     MOVE00_servo1:
-0148 D2A0            205             SETB P2.0
-014A 31DE            206             CALL DELAY0
-014C C2A0            207             CLR P2.0
-014E 31DE            208             CALL DELAY0
-0150 DFF6            209             DJNZ R7,MOVE00_servo1
-0152 7F00            210             MOV R7,#0
-0154 22              211             RET
-                     212     
-0155                 213     MOVET45_servo1:
-0155 7F14            214             MOV R7,#20
-0157                 215     MOVET455_servo1:
-0157 D2A0            216             SETB P2.0
-0159 31EE            217             CALL DELAYT45
-015B C2A0            218             CLR P2.0
-015D 31EE            219             CALL DELAYT45
-015F DFF6            220             DJNZ R7,MOVET455_servo1
-0161 7F00            221             MOV R7,#0
-0163 22              222             RET
-                     223             
-0164                 224     MOVET90_servo1:
-0164 7F14            225             MOV R7,#20
-0166                 226     MOVET900_servo1:
-0166 D2A0            227             SETB P2.0
-0168 31FE            228             CALL DELAYT90
-016A C2A0            229             CLR P2.0
-016C 31FE            230             CALL DELAYT90
-016E DFF6            231             DJNZ R7,MOVET900_servo1
-0170 7F00            232             MOV R7,#0
-0172 22              233             RET
-                     234             
-                     235     ;------------------------------ CHUONG TRINH CON GOC SERVO 2 -------------------
-0173                 236     MOVE90_servo2:
-0173 7F14            237             MOV R7,#20
-0175                 238     MOVE900_servo2:
-0175 D2A1            239             SETB P2.1
-0177 31BE            240             CALL DELAY90
-0179 C2A1            241             CLR P2.1
-017B 31BE            242             CALL DELAY90
-017D DFF6            243             DJNZ R7,MOVE900_servo2
-017F 7F00            244             MOV R7,#0
-0181 22              245             RET
-                     246     
-0182                 247     MOVE45_servo2:
-0182 7F14            248             MOV R7,#20
-0184                 249     MOVE455_servo2:
-0184 D2A1            250             SETB P2.1
-0186 31CE            251             CALL DELAY45
-0188 C2A1            252             CLR P2.1
-018A 31CE            253             CALL DELAY45
-018C DFF6            254             DJNZ R7,MOVE455_servo2
-018E 7F00            255             MOV R7,#0
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     5
+0136 D2A0            190             SETB P2.0
+0138 31CA            191             CALL DELAY90
+013A C2A0            192             CLR P2.0
+013C 31CA            193             CALL DELAY90
+013E DFF6            194             DJNZ R7,MOVE900_servo1
+0140 7F00            195             MOV R7,#0
+0142 22              196             RET
+                     197     
+0143                 198     MOVE45_servo1:
+0143 7F14            199             MOV R7,#20
+0145                 200     MOVE455_servo1:
+0145 D2A0            201             SETB P2.0
+0147 31DA            202             CALL DELAY45
+0149 C2A0            203             CLR P2.0
+014B 31DA            204             CALL DELAY45
+014D DFF6            205             DJNZ R7,MOVE455_servo1
+014F 7F00            206             MOV R7,#0
+0151 22              207             RET
+                     208     
+0152                 209     MOVE0_servo1:
+0152 7F14            210             MOV R7,#20
+0154                 211     MOVE00_servo1:
+0154 D2A0            212             SETB P2.0
+0156 31EA            213             CALL DELAY0
+0158 C2A0            214             CLR P2.0
+015A 31EA            215             CALL DELAY0
+015C DFF6            216             DJNZ R7,MOVE00_servo1
+015E 7F00            217             MOV R7,#0
+0160 22              218             RET
+                     219     
+0161                 220     MOVET45_servo1:
+0161 7F14            221             MOV R7,#20
+0163                 222     MOVET455_servo1:
+0163 D2A0            223             SETB P2.0
+0165 31FA            224             CALL DELAYT45
+0167 C2A0            225             CLR P2.0
+0169 31FA            226             CALL DELAYT45
+016B DFF6            227             DJNZ R7,MOVET455_servo1
+016D 7F00            228             MOV R7,#0
+016F 22              229             RET
+                     230             
+0170                 231     MOVET90_servo1:
+0170 7F14            232             MOV R7,#20
+0172                 233     MOVET900_servo1:
+0172 D2A0            234             SETB P2.0
+0174 510A            235             CALL DELAYT90
+0176 C2A0            236             CLR P2.0
+0178 510A            237             CALL DELAYT90
+017A DFF6            238             DJNZ R7,MOVET900_servo1
+017C 7F00            239             MOV R7,#0
+017E 22              240             RET
+                     241             
+                     242     ;------------------------------ CHUONG TRINH CON GOC SERVO 2 -------------------
+017F                 243     MOVE90_servo2:
+017F 7F14            244             MOV R7,#20
+0181                 245     MOVE900_servo2:
+0181 D2A1            246             SETB P2.1
+0183 31CA            247             CALL DELAY90
+0185 C2A1            248             CLR P2.1
+0187 31CA            249             CALL DELAY90
+0189 DFF6            250             DJNZ R7,MOVE900_servo2
+018B 7F00            251             MOV R7,#0
+018D 22              252             RET
+                     253     
+018E                 254     MOVE45_servo2:
+018E 7F14            255             MOV R7,#20
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     5
 
-0190 22              256             RET
-                     257     
-0191                 258     MOVE0_servo2:
-0191 7F14            259             MOV R7,#20
-0193                 260     MOVE00_servo2:
-0193 D2A1            261             SETB P2.1
-0195 31DE            262             CALL DELAY0
-0197 C2A1            263             CLR P2.1
-0199 31DE            264             CALL DELAY0
-019B DFF6            265             DJNZ R7,MOVE00_servo2
-019D 7F00            266             MOV R7,#0
-019F 22              267             RET
-                     268     
-01A0                 269     MOVET45_servo2:
-01A0 7F14            270             MOV R7,#20
-01A2                 271     MOVET455_servo2:
-01A2 D2A1            272             SETB P2.1
-01A4 31EE            273             CALL DELAYT45
-01A6 C2A1            274             CLR P2.1
-01A8 31EE            275             CALL DELAYT45
-01AA DFF6            276             DJNZ R7,MOVET455_servo2
-01AC 7F00            277             MOV R7,#0
-01AE 22              278             RET
-                     279             
-01AF                 280     MOVET90_servo2:
-01AF 7F14            281             MOV R7,#20
-01B1                 282     MOVET900_servo2:
-01B1 D2A1            283             SETB P2.1
-01B3 31FE            284             CALL DELAYT90
-01B5 C2A1            285             CLR P2.1
-01B7 31FE            286             CALL DELAYT90
-01B9 DFF6            287             DJNZ R7,MOVET900_servo2
-01BB 7F00            288             MOV R7,#0
-01BD 22              289             RET
-                     290             
-                     291     ;-----------    
-01BE                 292     DELAY90:
-01BE 758A3C          293             MOV TL0,#LOW(-2500)
-01C1 758CF6          294             MOV TH0,#HIGH(-2500)
-01C4 D28C            295             SETB TR0
-01C6 308DFD          296             JNB  TF0,$
-01C9 C28C            297             CLR  TR0
-01CB C28D            298             CLR  TF0
-01CD 22              299             RET
-01CE                 300     DELAY45:
-01CE 758A30          301             MOV TL0,#LOW(-2000)
-01D1 758CF8          302             MOV TH0,#HIGH(-2000)
-01D4 D28C            303             SETB TR0
-01D6 308DFD          304             JNB  TF0,$
-01D9 C28C            305             CLR  TR0
-01DB C28D            306             CLR  TF0
-01DD 22              307             RET
-01DE                 308     DELAY0:
-01DE 758A24          309             MOV TL0,#LOW(-1500)
-01E1 758CFA          310             MOV TH0,#HIGH(-1500)
-01E4 D28C            311             SETB TR0
-01E6 308DFD          312             JNB  TF0,$
-01E9 C28C            313             CLR  TR0
-01EB C28D            314             CLR  TF0
-01ED 22              315             RET
-01EE                 316     DELAYT45:
-01EE 758A18          317             MOV TL0,#LOW(-1000)
-01F1 758CFC          318             MOV TH0,#HIGH(-1000)
-01F4 D28C            319             SETB TR0
-01F6 308DFD          320             JNB  TF0,$
-01F9 C28C            321             CLR  TR0
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     6
+0190                 256     MOVE455_servo2:
+0190 D2A1            257             SETB P2.1
+0192 31DA            258             CALL DELAY45
+0194 C2A1            259             CLR P2.1
+0196 31DA            260             CALL DELAY45
+0198 DFF6            261             DJNZ R7,MOVE455_servo2
+019A 7F00            262             MOV R7,#0
+019C 22              263             RET
+                     264     
+019D                 265     MOVE0_servo2:
+019D 7F14            266             MOV R7,#20
+019F                 267     MOVE00_servo2:
+019F D2A1            268             SETB P2.1
+01A1 31EA            269             CALL DELAY0
+01A3 C2A1            270             CLR P2.1
+01A5 31EA            271             CALL DELAY0
+01A7 DFF6            272             DJNZ R7,MOVE00_servo2
+01A9 7F00            273             MOV R7,#0
+01AB 22              274             RET
+                     275     
+01AC                 276     MOVET45_servo2:
+01AC 7F14            277             MOV R7,#20
+01AE                 278     MOVET455_servo2:
+01AE D2A1            279             SETB P2.1
+01B0 31FA            280             CALL DELAYT45
+01B2 C2A1            281             CLR P2.1
+01B4 31FA            282             CALL DELAYT45
+01B6 DFF6            283             DJNZ R7,MOVET455_servo2
+01B8 7F00            284             MOV R7,#0
+01BA 22              285             RET
+                     286             
+01BB                 287     MOVET90_servo2:
+01BB 7F14            288             MOV R7,#20
+01BD                 289     MOVET900_servo2:
+01BD D2A1            290             SETB P2.1
+01BF 510A            291             CALL DELAYT90
+01C1 C2A1            292             CLR P2.1
+01C3 510A            293             CALL DELAYT90
+01C5 DFF6            294             DJNZ R7,MOVET900_servo2
+01C7 7F00            295             MOV R7,#0
+01C9 22              296             RET
+                     297             
+                     298     ;-----------    
+01CA                 299     DELAY90:
+01CA 758A3C          300             MOV TL0,#LOW(-2500)
+01CD 758CF6          301             MOV TH0,#HIGH(-2500)
+01D0 D28C            302             SETB TR0
+01D2 308DFD          303             JNB  TF0,$
+01D5 C28C            304             CLR  TR0
+01D7 C28D            305             CLR  TF0
+01D9 22              306             RET
+01DA                 307     DELAY45:
+01DA 758A30          308             MOV TL0,#LOW(-2000)
+01DD 758CF8          309             MOV TH0,#HIGH(-2000)
+01E0 D28C            310             SETB TR0
+01E2 308DFD          311             JNB  TF0,$
+01E5 C28C            312             CLR  TR0
+01E7 C28D            313             CLR  TF0
+01E9 22              314             RET
+01EA                 315     DELAY0:
+01EA 758A24          316             MOV TL0,#LOW(-1500)
+01ED 758CFA          317             MOV TH0,#HIGH(-1500)
+01F0 D28C            318             SETB TR0
+01F2 308DFD          319             JNB  TF0,$
+01F5 C28C            320             CLR  TR0
+01F7 C28D            321             CLR  TF0
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     6
 
-01FB C28D            322             CLR  TF0
-01FD 22              323             RET     
-01FE                 324     DELAYT90:
-01FE 758A0C          325             MOV TL0,#LOW(-500)
-0201 758CFE          326             MOV TH0,#HIGH(-500)
-0204 D28C            327             SETB TR0
-0206 308DFD          328             JNB  TF0,$
-0209 C28C            329             CLR  TR0
-020B C28D            330             CLR  TF0
-020D 22              331             RET
-                     332     end
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     7
+01F9 22              322             RET
+01FA                 323     DELAYT45:
+01FA 758A18          324             MOV TL0,#LOW(-1000)
+01FD 758CFC          325             MOV TH0,#HIGH(-1000)
+0200 D28C            326             SETB TR0
+0202 308DFD          327             JNB  TF0,$
+0205 C28C            328             CLR  TR0
+0207 C28D            329             CLR  TF0
+0209 22              330             RET     
+020A                 331     DELAYT90:
+020A 758A0C          332             MOV TL0,#LOW(-500)
+020D 758CFE          333             MOV TH0,#HIGH(-500)
+0210 D28C            334             SETB TR0
+0212 308DFD          335             JNB  TF0,$
+0215 C28C            336             CLR  TR0
+0217 C28D            337             CLR  TF0
+0219 22              338             RET
+                     339     end
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     7
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -358,73 +365,76 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
-AGAIN. . . . . . .  C ADDR   011CH   A   
-CONTROL_SERVO. . .  C ADDR   0049H   A   
-DELAY0 . . . . . .  C ADDR   01DEH   A   
-DELAY45. . . . . .  C ADDR   01CEH   A   
-DELAY90. . . . . .  C ADDR   01BEH   A   
-DELAYSV. . . . . .  C ADDR   0112H   A   
-DELAYSVV . . . . .  C ADDR   0114H   A   
-DELAYT45 . . . . .  C ADDR   01EEH   A   
-DELAYT90 . . . . .  C ADDR   01FEH   A   
+AGAIN. . . . . . .  C ADDR   0128H   A   
+BACK . . . . . . .  C ADDR   0118H   A   
+CONTROL_SERVO. . .  C ADDR   004BH   A   
+DELAY0 . . . . . .  C ADDR   01EAH   A   
+DELAY45. . . . . .  C ADDR   01DAH   A   
+DELAY90. . . . . .  C ADDR   01CAH   A   
+DELAYSV. . . . . .  C ADDR   011EH   A   
+DELAYSVV . . . . .  C ADDR   0120H   A   
+DELAYT45 . . . . .  C ADDR   01FAH   A   
+DELAYT90 . . . . .  C ADDR   020AH   A   
 HERE . . . . . . .  C ADDR   003EH   A   
 IE . . . . . . . .  D ADDR   00A8H   A   
 MAIN . . . . . . .  C ADDR   0030H   A   
-MOVE00_SERVO1. . .  C ADDR   0148H   A   
-MOVE00_SERVO2. . .  C ADDR   0193H   A   
-MOVE0_SERVO1 . . .  C ADDR   0146H   A   
-MOVE0_SERVO2 . . .  C ADDR   0191H   A   
-MOVE455_SERVO1 . .  C ADDR   0139H   A   
-MOVE455_SERVO2 . .  C ADDR   0184H   A   
-MOVE45_SERVO1. . .  C ADDR   0137H   A   
-MOVE45_SERVO2. . .  C ADDR   0182H   A   
-MOVE900_SERVO1 . .  C ADDR   012AH   A   
-MOVE900_SERVO2 . .  C ADDR   0175H   A   
-MOVE90_SERVO1. . .  C ADDR   0128H   A   
-MOVE90_SERVO2. . .  C ADDR   0173H   A   
-MOVET455_SERVO1. .  C ADDR   0157H   A   
-MOVET455_SERVO2. .  C ADDR   01A2H   A   
-MOVET45_SERVO1 . .  C ADDR   0155H   A   
-MOVET45_SERVO2 . .  C ADDR   01A0H   A   
-MOVET900_SERVO1. .  C ADDR   0166H   A   
-MOVET900_SERVO2. .  C ADDR   01B1H   A   
-MOVET90_SERVO1 . .  C ADDR   0164H   A   
-MOVET90_SERVO2 . .  C ADDR   01AFH   A   
+MOVE00_SERVO1. . .  C ADDR   0154H   A   
+MOVE00_SERVO2. . .  C ADDR   019FH   A   
+MOVE0_SERVO1 . . .  C ADDR   0152H   A   
+MOVE0_SERVO2 . . .  C ADDR   019DH   A   
+MOVE455_SERVO1 . .  C ADDR   0145H   A   
+MOVE455_SERVO2 . .  C ADDR   0190H   A   
+MOVE45_SERVO1. . .  C ADDR   0143H   A   
+MOVE45_SERVO2. . .  C ADDR   018EH   A   
+MOVE900_SERVO1 . .  C ADDR   0136H   A   
+MOVE900_SERVO2 . .  C ADDR   0181H   A   
+MOVE90_SERVO1. . .  C ADDR   0134H   A   
+MOVE90_SERVO2. . .  C ADDR   017FH   A   
+MOVET455_SERVO1. .  C ADDR   0163H   A   
+MOVET455_SERVO2. .  C ADDR   01AEH   A   
+MOVET45_SERVO1 . .  C ADDR   0161H   A   
+MOVET45_SERVO2 . .  C ADDR   01ACH   A   
+MOVET900_SERVO1. .  C ADDR   0172H   A   
+MOVET900_SERVO2. .  C ADDR   01BDH   A   
+MOVET90_SERVO1 . .  C ADDR   0170H   A   
+MOVET90_SERVO2 . .  C ADDR   01BBH   A   
 P2 . . . . . . . .  D ADDR   00A0H   A   
-PASS1. . . . . . .  C ADDR   0051H   A   
-PASS10 . . . . . .  C ADDR   0099H   A   
-PASS11 . . . . . .  C ADDR   00A1H   A   
-PASS12 . . . . . .  C ADDR   00A9H   A   
-PASS13 . . . . . .  C ADDR   00B1H   A   
-PASS14 . . . . . .  C ADDR   00B9H   A   
-PASS15 . . . . . .  C ADDR   00C1H   A   
-PASS16 . . . . . .  C ADDR   00C9H   A   
-PASS17 . . . . . .  C ADDR   00D1H   A   
-PASS18 . . . . . .  C ADDR   00D9H   A   
-PASS19 . . . . . .  C ADDR   00E1H   A   
-PASS2. . . . . . .  C ADDR   0059H   A   
-PASS20 . . . . . .  C ADDR   00E9H   A   
-PASS21 . . . . . .  C ADDR   00F1H   A   
-PASS22 . . . . . .  C ADDR   00F9H   A   
-PASS23 . . . . . .  C ADDR   0101H   A   
-PASS24 . . . . . .  C ADDR   0109H   A   
-PASS25 . . . . . .  C ADDR   0111H   A   
-PASS3. . . . . . .  C ADDR   0061H   A   
-PASS4. . . . . . .  C ADDR   0069H   A   
-PASS5. . . . . . .  C ADDR   0071H   A   
-PASS6. . . . . . .  C ADDR   0079H   A   
-PASS7. . . . . . .  C ADDR   0081H   A   
-PASS8. . . . . . .  C ADDR   0089H   A   
-PASS9. . . . . . .  C ADDR   0091H   A   
+PASS1. . . . . . .  C ADDR   0053H   A   
+PASS10 . . . . . .  C ADDR   009BH   A   
+PASS11 . . . . . .  C ADDR   00A3H   A   
+PASS12 . . . . . .  C ADDR   00ABH   A   
+PASS13 . . . . . .  C ADDR   00B3H   A   
+PASS14 . . . . . .  C ADDR   00BBH   A   
+PASS15 . . . . . .  C ADDR   00C3H   A   
+PASS16 . . . . . .  C ADDR   00CBH   A   
+PASS17 . . . . . .  C ADDR   00D3H   A   
+PASS18 . . . . . .  C ADDR   00DBH   A   
+PASS19 . . . . . .  C ADDR   00E3H   A   
+PASS2. . . . . . .  C ADDR   005BH   A   
+PASS20 . . . . . .  C ADDR   00EBH   A   
+PASS21 . . . . . .  C ADDR   00F3H   A   
+PASS22 . . . . . .  C ADDR   00FBH   A   
+PASS23 . . . . . .  C ADDR   0103H   A   
+PASS24 . . . . . .  C ADDR   010BH   A   
+PASS25 . . . . . .  C ADDR   0113H   A   
+PASS3. . . . . . .  C ADDR   0063H   A   
+PASS4. . . . . . .  C ADDR   006BH   A   
+PASS5. . . . . . .  C ADDR   0073H   A   
+PASS6. . . . . . .  C ADDR   007BH   A   
+PASS7. . . . . . .  C ADDR   0083H   A   
+PASS8. . . . . . .  C ADDR   008BH   A   
+PASS9. . . . . . .  C ADDR   0093H   A   
+REPLY. . . . . . .  C ADDR   0114H   A   
+A51 MACRO ASSEMBLER  VRHEADSET                                                            06/05/2019 09:16:17 PAGE     8
+
 RI . . . . . . . .  B ADDR   0098H.0 A   
 SBUF . . . . . . .  D ADDR   0099H   A   
-A51 MACRO ASSEMBLER  VRHEADSET                                                            06/02/2019 15:47:39 PAGE     8
-
 SCON . . . . . . .  D ADDR   0098H   A   
 SERIAL . . . . . .  C ADDR   0042H   A   
 TF0. . . . . . . .  B ADDR   0088H.5 A   
 TH0. . . . . . . .  D ADDR   008CH   A   
 TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
 TL0. . . . . . . .  D ADDR   008AH   A   
 TMOD . . . . . . .  D ADDR   0089H   A   
 TR0. . . . . . . .  B ADDR   0088H.4 A   

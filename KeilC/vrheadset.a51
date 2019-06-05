@@ -42,10 +42,10 @@ main:
 		//ACALL DELAYSV
       //jmp Loop
 	  /*
-	  servo1: ground-sky: Pwm on P2.0
+	  servo1: ground-sky: Pwm on P2.0 //tiankon
 	  -quay len tren: 1 - move90
 	  -quay xuong duoi: 5- movet90
-	  servo2: left-right: Pwm on P2.1
+	  servo2: left-right: Pwm on P2.1 //tower pro
 	  -quay sang trai: 1 - movet90
 	  -quay sang phai: 5 - move90
 	  
@@ -57,6 +57,7 @@ serial:
 		;mov R7,A
 		acall control_servo
 		clr RI
+		acall reply
 		reti
 
 control_servo:
@@ -163,6 +164,12 @@ pass24:	cjne R7,#'y',pass25 ;if R7 != b then jump to pass2//55
 		ret		
 pass25:	ret
 
+reply:
+		mov A,#'z'
+		mov sbuf,A
+		back:jnb TI,back
+		clr TI
+		ret
 
 DELAYSV:
 	MOV	R7,#5
